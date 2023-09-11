@@ -67,6 +67,6 @@ public class Pumpkin : Monster
 
     protected override void PlayScreemSound()
     {
-        soundControler.PlayPumpkinScream(true);
+        SoundControler.Instance.PlayPumpkinScream(true);
     }
 }

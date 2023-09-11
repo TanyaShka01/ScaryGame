@@ -10,6 +10,24 @@ public class SoundControler : MonoBehaviour
     public AudioSource ClownScream;
     public AudioSource JestersScream;
     public AudioSource ButtonClick;
+    public static SoundControler Instance;
+
+
+    void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void ActiwaitSound(bool Actiwe)
+    {
+        AudioSource[] AllAudioSources;
+        AllAudioSources = GetComponentsInChildren<AudioSource>();
+        for(int i = 0; i < AllAudioSources.Length; i += 1)
+        {
+            AllAudioSources[i].mute = !Actiwe;
+        }
+    }
 
     public void PlayMusicBox(bool Play)
     {

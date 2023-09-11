@@ -9,7 +9,6 @@ public class Monster : MonoBehaviour
     public Tablet tablet;
     public LoseManu GameOver;
     public Animator animator;
-    public SoundControler soundControler;
     protected bool sleep;
     protected Vector3 StartPosition;
     

@@ -47,6 +47,7 @@ public class Clown : Monster
             }
             else
             {
+                animator.SetTrigger("Sleep");
                 transform.position = StartPosition;
             }
         }
@@ -115,6 +116,6 @@ public class Clown : Monster
 
     protected override void PlayScreemSound()
     {
-        soundControler.PlayClowScream(true);
+        SoundControler.Instance.PlayClowScream(true);
     }
 }

@@ -18,16 +18,9 @@ public class Buttary : MonoBehaviour
     
     public event Action OnEnergyEnd;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(ChangeEnergy());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator ChangeEnergy ()
@@ -37,19 +30,19 @@ public class Buttary : MonoBehaviour
             yield return new WaitForSeconds(5);
             if (LightLeftOn == true)
             {
-                energy -= 2;
+                energy -= 3;
             }
             if (LightRightOn == true)
             {
-                energy -= 2;
+                energy -= 3;
             }
             if (LeftDoorSpend == true)
             {
-                energy -= 2;
+                energy -= 5;
             }
             if (RightDoorSpend == true)
             {
-                energy -= 2;
+                energy -= 5;
             }
             EnergyText.text = energy.ToString();
             EnergyImage.fillAmount = energy/100f;
@@ -61,5 +54,10 @@ public class Buttary : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void Fill()
+    {
+        energy = 100;
     }
 }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 public class Tablet : MonoBehaviour
 {
     bool IsOpen;
+    bool Exit;
     public Animator Anim;
     public Camera MainCamera;
     public Room[] Rooms;
     public GameObject Buttons;
-    public SoundControler soundControler;
     public Animator NoiseAnimator;
     public GameObject Frame;
     public bool Block;
@@ -41,7 +41,7 @@ public class Tablet : MonoBehaviour
         {
             Rooms[i].Disable();
         }
-        soundControler.PlayButtonClick(true);
+        SoundControler.Instance.PlayButtonClick(true);
         SelectedRoom.Activate();
     }
 
@@ -104,11 +104,16 @@ public class Tablet : MonoBehaviour
 
     async void PlayNoiseAnim()
     {
-        while(true)
+        while(Exit == false)
         {
             int a = UnityEngine.Random.Range(7, 10);
             await Task.Delay(a * 1000);
             NoiseAnimator.SetTrigger("PlayNoise");
         }
+    }
+
+    void OnDestroy()
+    {
+        Exit = true;
     }
 }

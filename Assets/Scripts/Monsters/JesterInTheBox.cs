@@ -10,7 +10,6 @@ public class JesterInTheBox : Monster
     public GameObject OpenChest;
     public Image Gear;
     public Animator[] Animators;
-    public SoundControler Sounds;
     public Transform InTheBox1;
     public Transform InTheBox2;
     float EnergyLevel = 1;
@@ -70,7 +69,7 @@ public class JesterInTheBox : Monster
             if (EnergyLevel <= 0)
             {
                 int n = 0;
-                Sounds.PlayMusicBox(true);
+                SoundControler.Instance.PlayMusicBox(true);
                 await Task.Delay(5000);
                 while (n != 3)
                 {
@@ -94,7 +93,7 @@ public class JesterInTheBox : Monster
                         n += 1;
                     }
                 }
-                Sounds.PlayMusicBox(false);
+                SoundControler.Instance.PlayMusicBox(false);
                 Lose();
                 return;
             }
@@ -119,13 +118,13 @@ public class JesterInTheBox : Monster
         await Task.Delay(LaughtDelay * 1000);
         if(EnergyLevel > 0 && EnergyLevel < 0.5f)
         {
-            Sounds.PlayJesterLaught(true);
+            SoundControler.Instance.PlayJesterLaught(true);
             Debug.Log("JesterLaught");
         }
     }
 
     protected override void PlayScreemSound()
     {
-        soundControler.PlayJesterScream(true);
+        SoundControler.Instance.PlayJesterScream(true);
     }
 }
